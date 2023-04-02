@@ -6,9 +6,21 @@ import Certifications from './components/Certifications';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Carousel from './components/Carousel';
+import Comments from './components/Comments';
 import './App.css';
 
 function App() {
+  const user =
+  {
+    
+    name: '',
+    email: '',
+    message: '',
+
+  };
+  const handleSave = (values) => {
+    console.log({values});
+  };
   return (
     <div >
     <Main/>
@@ -23,8 +35,10 @@ function App() {
       </Carousel>
     </div> */}
     <Certifications/>
-    <Contact/>
+    <Contact onSave={handleSave} {...{ user}}/>
+   
     <Footer/>
+    <Comments/>
 
     </div>
   );
