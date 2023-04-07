@@ -1,8 +1,25 @@
-.project-card:hover { transform: scale(1.05); 
- background-color:#E3DFFD;}
-.project-card { 
+.project-card:hover {
+    transform: scale(1.05);
+    background-color: #e3dffd;
+}
+.project-card {
     transition: all 150s ease-in-out;
 }
-.root{
-    background-color: #19A7CE;
+.root {
+    background-color: #19a7ce;
+}
+.react-multiple-carousel__arrow--left {
+    bottom: 86px;
+    left: 0px;
+}
+.react-multiple-carousel__arrow--right {
+    bottom: 86px;
+    right: 0px;
+}
+.carousel-container {
+    width: 100%;
+}
+.css-hip9hq-MuiPaper-root-MuiAppBar-root {
+    background-color: #00012a;
+    color: #ffffff;
 }

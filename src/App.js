@@ -1,47 +1,29 @@
-import Main from './components/Main';
-import About from './components/About';
-import Projects from './components/Projects';
-import Skills from './components/Skills';
-import Certifications from './components/Certifications';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-import Carousel from './components/Carousel';
-import Comments from './components/Comments';
-import './App.css';
+import { Routes, Route } from "react-router-dom"
+import Homepage from "./pages/Homepage"
+import Login from "./pages/Login"
+import Register from "./pages/Register"
+import Navbar from "./components/Navbar"
+import NavbarLogout from "./components/NavbarLogout"
+import CommentForm from "./pages/CommentForm"
+
+import "./App.css"
 
 function App() {
-  const user =
-  {
-    
-    name: '',
-    email: '',
-    message: '',
+    return (
+        <div>
+            <Routes>
+                <Route element={<Navbar />}>
+                    <Route path="" element={<Homepage />} />
 
-  };
-  const handleSave = (values) => {
-    console.log({values});
-  };
-  return (
-    <div >
-    <Main/>
-    <About/>
-    <Projects/>
-    <Skills/>
-    {/* <div style={{ maxWidth: 1200, marginLeft: 'auto', marginRight: 'auto', marginTop: 64 }}>
-      <Carousel>
-        <img src="https://via.placeholder.com/1600x300" alt="placeholder" />
-        <img src="https://via.placeholder.com/1600x300" alt="placeholder" />
-        <img src="https://via.placeholder.com/1600x300" alt="placeholder" />
-      </Carousel>
-    </div> */}
-    <Certifications/>
-    <Contact onSave={handleSave} {...{ user}}/>
-   
-    <Footer/>
-    <Comments/>
-
-    </div>
-  );
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
+                </Route>
+                <Route element={<NavbarLogout />}>
+                    <Route path="/commentsform" element={<CommentForm />} />
+                </Route>
+            </Routes>
+        </div>
+    )
 }
 
-export default App;
+export default App
