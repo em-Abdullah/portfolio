@@ -54,7 +54,7 @@
 // }
 
 // export default Navbar
-import { AppBar, Box, Toolbar, Typography, Button } from "@mui/material"
+import { AppBar, Box, Toolbar, Typography } from "@mui/material"
 import { Link, Outlet, useLocation } from "react-router-dom"
 
 const Navbar = () => {
@@ -73,10 +73,10 @@ const Navbar = () => {
                         <Typography variant="h5" component="div">
                             <Link to="/" target="_blank" rel="noreferrer">
                                 <img
-                                    src="/react.png"
+                                    src="/logo.svg"
                                     alt="Homepage"
                                     width="50"
-                                    height="50"
+                                    height="100"
                                 ></img>
                             </Link>
                         </Typography>

@@ -139,12 +139,12 @@ const responsive = {
         //slidesToSlide: 2// optional, default to 1.
     },
     tablet: {
-        breakpoint: { max: 1024, min: 464 },
-        items: 2,
+        breakpoint: { max: 1024, min: 600 },
+        items: 1,
         slidesToSlide: 1, // optional, default to 1.
     },
     mobile: {
-        breakpoint: { max: 464, min: 0 },
+        breakpoint: { max: 600, min: 0 },
         items: 1,
         slidesToSlide: 1, // optional, default to 1.
     },
@@ -166,7 +166,7 @@ const Skills = () => {
                     component="h1"
                     sx={{ textAlign: "center", marginBottom: "0.7em" }}
                 >
-                    MY Skills{" "}
+                    MY Skills
                 </Typography>
             </Box>
 
@@ -179,9 +179,9 @@ const Skills = () => {
                 }}
             >
                 <Carousel
-                    swipeable={false}
+                    swipeable={true}
                     draggable={false}
-                    showDots={true}
+                    showDots={false}
                     responsive={responsive}
                     infinite={true}
                     autoPlaySpeed={1000}
@@ -189,7 +189,6 @@ const Skills = () => {
                     transitionDuration={500}
                     containerClass="carousel-container"
                     removeArrowOnDeviceType={["tablet", "mobile"]}
-                    dotListClass="custom-dot-list-style"
                     itemClass="carousel-item-padding-200-px"
                     rtl={true}
                 >

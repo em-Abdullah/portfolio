@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client"
+import { gql, useSubscription } from "@apollo/client"
 
 const ADD_COMMENT = gql`
     mutation Mutation($contactInput: ContactInput) {

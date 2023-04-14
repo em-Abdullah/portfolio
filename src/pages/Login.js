@@ -1,11 +1,11 @@
-import Comments from "../components/Comments"
 import { TextField, Button, Container, Stack, Alert } from "@mui/material"
 import { useMutation } from "@apollo/client"
 import { gql } from "@apollo/client"
 import { useNavigate } from "react-router-dom"
 import { useForm } from "../utility/hooks"
 import { useState } from "react"
-import { Password } from "@mui/icons-material"
+import { useDispatch } from "react-redux"
+import { setUser } from "../redux/slices/userSlice"
 
 const LOGIN_USER = gql`
     mutation login($loginInput: LoginInput) {
@@ -35,10 +35,15 @@ const Login = (props) => {
         email: "",
         password: "",
     })
+    const dispatch = useDispatch()
     const [loginUser, { loading }] = useMutation(LOGIN_USER, {
         update(proxy, { data: { loginUser: userData } }) {
             // localStorage.setItem('isLoggedIn', true);
-
+            dispatch(
+                setUser({
+                    email: userData.email,
+                })
+            )
             navigate("/commentsform")
         },
         onError({ graphQLErrors }) {
@@ -47,6 +52,7 @@ const Login = (props) => {
         variables: { loginInput: values },
     })
 
+    // useDistptch--> save, useSelect--> getter
     return (
         <Container spacing={2} maxWidth="sm">
             <h3>Admin Login</h3>

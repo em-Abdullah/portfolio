@@ -1,12 +1,8 @@
-import * as React from "react"
-import { styled } from "@mui/material/styles"
 import Box from "@mui/material/Box"
-import Paper from "@mui/material/Paper"
 import Grid from "@mui/material/Grid"
 import TextField from "@mui/material/TextField"
 import Button from "@mui/material/Button"
 import SendIcon from "@mui/icons-material/Send"
-import FormControl from "@mui/material/FormControl"
 import { Container } from "@mui/system"
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone"
 import Typography from "@mui/material/Typography"
@@ -16,19 +12,21 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn"
 import GitHubIcon from "@mui/icons-material/GitHub"
 import Link from "@mui/material/Link"
 import { useState } from "react"
-import validator from "validator"
 import { useMutation } from "@apollo/client"
 import { ADD_COMMENT } from "../mutations/commentMutations"
-import Alert from "@mui/material/Alert"
+import { useDispatch, useSelector } from "react-redux"
+import { setContact } from "../redux/slices/contactSlice"
 
 // import Select from "react-select";
 
 const Contact = () => {
+    const currentComments = useSelector((state) => state.comment)
+    console.log(currentComments)
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [comment, setComment] = useState("")
     const [errors, setErrors] = useState({})
-
+    const dispatch = useDispatch()
     const [createContact, { loading, error }] = useMutation(ADD_COMMENT)
 
     // const Contact = ({onSave, user = {}}) => {
@@ -69,6 +67,7 @@ const Contact = () => {
     //   };
     const onSubmit = (e) => {
         e.preventDefault()
+
         console.log(name, email, comment)
         let errors = {}
         if (name.trim() === "") {
@@ -99,6 +98,7 @@ const Contact = () => {
                 },
             },
         })
+        dispatch(setContact({ name, email, comment }))
     }
 
     return (
@@ -123,7 +123,9 @@ const Contact = () => {
                 <Grid container spacing={2} sx={{ justifyContent: "center" }}>
                     <Grid
                         item
-                        xs={8}
+                        xs={12}
+                        sm={12}
+                        md={8}
                         container
                         justify="flex-start"
                         justifyContent="center"
@@ -212,7 +214,7 @@ const Contact = () => {
                             </Box>
                         </Container>
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid item xs={12} sm={12} md={4}>
                         <Stack direction="row" alignItems="center" gap={1}>
                             <LocalPhoneIcon />
                             <Typography variant="body1">
@@ -238,13 +240,7 @@ const Contact = () => {
                             paddingTop="40px"
                         >
                             <GitHubIcon />
-                            <Typography
-                                variant="body1"
-                                noWrap
-                                component={Link}
-                                to="/"
-                                color="textPrimary"
-                            >
+                            <Typography variant="body1">
                                 <Link
                                     href="https://github.com/em-Abdullah"
                                     underline="none"
@@ -261,13 +257,7 @@ const Contact = () => {
                             paddingTop="10px"
                         >
                             <LinkedInIcon />
-                            <Typography
-                                variant="body1"
-                                noWrap
-                                component={Link}
-                                to="/"
-                                color="textPrimary"
-                            >
+                            <Typography variant="body1">
                                 <Link
                                     href="https://linkedin.com/in/muhammad-abdullah-tenno"
                                     underline="none"

@@ -1,7 +1,14 @@
 import { AppBar, Box, Toolbar, Typography, Button } from "@mui/material"
 import { Link, Outlet } from "react-router-dom"
-
+import { useDispatch } from "react-redux"
+import { clearUser } from "../redux/slices/userSlice"
 const NavbarLogout = () => {
+    const dispatch = useDispatch()
+    const handleLogout = () => {
+        // Dispatch the clearUser action
+        dispatch(clearUser())
+    }
+
     return (
         <>
             <Box sx={{ flexGrow: 1 }}>
@@ -23,6 +30,7 @@ const NavbarLogout = () => {
                         <Box
                             alignItems="right"
                             sx={{ flexGrow: 1, textAlign: "right" }}
+                            onClick={handleLogout}
                         >
                             <Link
                                 to="/login"
@@ -34,7 +42,6 @@ const NavbarLogout = () => {
                             >
                                 Log Out{" "}
                             </Link>
-                            
                         </Box>
                     </Toolbar>
                 </AppBar>
